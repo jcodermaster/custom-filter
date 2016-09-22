@@ -15,6 +15,7 @@
 		$result_text_color = $_POST['result_text_color'];
 
 		$form_to_display = $_POST['form_to_display'];
+		$sort_cutting_length = $_POST['sort_cutting_length'];
 		
 		
 		
@@ -27,7 +28,8 @@
 					  'cf_button_color' => $button_color,
 					  'cf_result_heading_color' => $result_heading_color,
 					  'cf_result_text_color' => $result_text_color,
-					  'cf_form_display' => $form_to_display);
+					  'cf_form_display' => $form_to_display,
+					  'cf_sort_cutting_length' => $sort_cutting_length);
 		
 		$update = $action->updateData('wp_cf_settings', 1, 'cf_setting_id', $data);
 		
@@ -61,6 +63,22 @@
 			  </ul>
 			  <div id="general">
 				<h2>Generals</h2>
+
+				<table>
+					<tbody>
+						<tr>
+							<th scope="row"><label for="sort_cutting_length">Sort Cutting Length</label></th>
+							<td>
+								<select name="sort_cutting_length" id="sort_cutting_length">
+									<option value="">--Sort Item--</option>
+									<option value="asc" <?php echo $action->checkSelect($settings[0]->cf_sort_cutting_length,'asc')?>>ASC</option>
+									<option value="desc" <?php echo $action->checkSelect($settings[0]->cf_sort_cutting_length,'desc')?>>DESC</option>
+								</select>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
 			  </div>
 			  <div id="filter-result">
 				<h2>Filter Result</h2>

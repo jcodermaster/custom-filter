@@ -1,7 +1,14 @@
 <?php 
 
-	function dynamic_shortcode( $atts ){
+function dynamic_shortcode( $atts ){
 		
+
+		require_once('actions.php');
+
+		$action = new Actions();
+
+		$settings = $action->getSingleRow('wp_cf_settings',1,'cf_setting_id'); 
+
 		
 		$var = shortcode_atts( array('cat' => $cat,'filter_name' => $filter_name), $atts );
 		
@@ -20,6 +27,7 @@
 		$output = NULL;
 		
 		$output .='<div class="form-container">';
+			$output .='<input type="hidden" name="cutting_sort" id="cutting_sort" value="'.$settings[0]->cf_sort_cutting_length.'"/>' ;
 			$output .='<h3>'.$var['filter_name'].'</h3>';
 			$output .='<div class="et_pb_row" style="width:100%!important;">';
 				$output .='<div class="et_pb_column et_pb_column_1_4">';
@@ -102,12 +110,13 @@ $output .= "<script type=\"text/javascript\">
 			//alert('change');
 			
 			var mainCatId = jQuery('#model_cat".$var['cat']."').val();
+			var cutSort = jQuery('#cutting_sort').val();
 			
 			jQuery.ajax({
 					'url': '" . $url . "cutting_length_helper.php',
 					'type': 'POST',
 					'dataType': 'JSON',
-					'data': {'type':'mainCatID', 'value':mainCatId},
+					'data': {'type':'mainCatID', 'value':mainCatId, 'cutting_sort':cutSort},
 					'success':function(result){
 						
 						jQuery('#loader').empty();
