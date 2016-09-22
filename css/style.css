@@ -1,0 +1,8 @@
+.result_container{
+	padding-bottom:20px;
+	margin-bottom:20px;
+	border-bottom:1px solid #c0c0c0;
+}
+#result_page{
+	width:80%;
+}
