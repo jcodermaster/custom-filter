@@ -13,6 +13,8 @@
 		$button_color = $_POST['button_color'];
 		$result_heading_color = $_POST['result_heading_color'];
 		$result_text_color = $_POST['result_text_color'];
+
+		$form_to_display = $_POST['form_to_display'];
 		
 		
 		
@@ -24,7 +26,8 @@
 					  'cf_button_bg' => $button_bg,
 					  'cf_button_color' => $button_color,
 					  'cf_result_heading_color' => $result_heading_color,
-					  'cf_result_text_color' => $result_text_color);
+					  'cf_result_text_color' => $result_text_color,
+					  'cf_form_display' => $form_to_display);
 		
 		$update = $action->updateData('wp_cf_settings', 1, 'cf_setting_id', $data);
 		
@@ -43,6 +46,7 @@
 		
 	}
 	$settings = $action->getSingleRow('wp_cf_settings',1,'cf_setting_id');
+	$forms = $action->getAllData('wp_cf_shortcodes');
 ?>
 <div class="wrap">
 	<h2>Filter Settings</h2>
@@ -67,6 +71,19 @@
 							<th scope="row"><label for="result_page">Result Page</label></th>
 							<td>
 								<input type="text" name="result_page" id="result_page" value="<?php echo $settings[0]->cf_result_page; ?>"/>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row"><label for="form_display">Display Filter Form</label></th>
+							<td>
+								<select name="form_to_display">
+									<option value="">--Select The Form--</option>
+									<?php foreach ( $forms as $form) { ?>
+										<option value="<?php echo $form->cf_cat_id; ?>" <?php echo $action->checkSelect($settings[0]->cf_form_display,$form->cf_cat_id)?>> 
+											<?php echo $form->cf_name; ?>
+										 </option>
+									<?php } ?>
+								</select>
 							</td>
 						</tr>
 						<tr>
