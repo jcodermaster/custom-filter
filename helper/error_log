@@ -1,0 +1,3 @@
+[16-Sep-2016 11:52:49 UTC] PHP Fatal error:  Call to undefined function get_field() in /home/mikesaw/public_html/wp-content/plugins/custom-filter/helper/cutting_length_helper.php on line 25
+[16-Sep-2016 11:52:59 UTC] PHP Fatal error:  Call to undefined function get_field() in /home/mikesaw/public_html/wp-content/plugins/custom-filter/helper/cutting_length_helper.php on line 25
+[16-Sep-2016 11:53:11 UTC] PHP Fatal error:  Call to undefined function get_field() in /home/mikesaw/public_html/wp-content/plugins/custom-filter/helper/cutting_length_helper.php on line 25

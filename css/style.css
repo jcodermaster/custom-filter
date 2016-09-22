@@ -1,8 +1,18 @@
 .result_container{
 	padding-bottom:20px;
 	margin-bottom:20px;
-	border-bottom:1px solid #c0c0c0;
 }
 #result_page{
 	width:80%;
+}
+.result_container .add_to_cart_inline{
+	border: none!important;
+}
+.result_title a{
+	 color: #ff8e37!important;
+    font-size: 14px!important;
+}
+.result_title,
+.result_container .add_to_cart_inline{
+	text-align: center!important;
 }

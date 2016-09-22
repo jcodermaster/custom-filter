@@ -22,7 +22,7 @@
 					 	if (result!= ''){
 							
 							jQuery("select[name='model_cat'] option").remove();
-							jQuery("select[name='model_cat']").append('<option value="" data-value="">Select Model</option>');
+							jQuery("select[name='model_cat']").append('<option value="-1" data-value="">Select Model</option>');
 							jQuery.each(result, function(k,v){	
 								  jQuery("select[name='model_cat']").append('<option value="'+v.catID+'" data-value="'+v.catID+'">'+v.catName+'</option>');	
 							});
@@ -66,7 +66,7 @@
 					 	if (result!= ''){
 							
 							jQuery("select[name='cutting_length'] option").remove();
-							jQuery("select[name='cutting_length']").append('<option value="" data-value="">Select Cutting Length</option>');
+							jQuery("select[name='cutting_length']").append('<option value="-1" data-value="">Select Cutting Length</option>');
 							jQuery.each(result, function(k,v){	
 								  jQuery("select[name='cutting_length']").append('<option value="'+v.cutting_length+'" data-value="'+v.cutting_length+'">'+v.cutting_length+'</option>');	
 							});
