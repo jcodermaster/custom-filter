@@ -92,7 +92,7 @@ function settings(){
 		add_filter('query_vars', 'add_query_vars');
 		
 		function add_rewrite_rules($aRules) {
-			$aNewRules = array('filter-result/([^/]+)/([^/]+)/([^/]+)/?$' => 'index.php?pagename=filter-result&var_make=$matches[1]&var_model=$matches[2]&var_cutting_length=$matches[3]');			   
+			$aNewRules = array('filter-result/([^/]+)/([^/]+)/([^/]+)/?$' => 'index.php?pagename=filter-result&var_make=$matches[1]&var_model=$matches[2]&var_cutting_length=$matches[3]', 'filter-result/([^/]+)/([^/]+)/([^/]+)/page/([0-9]+)?$' => 'index.php?pagename=filter-result&var_make=$matches[1]&var_model=$matches[2]&var_cutting_length=$matches[3]&paged=$matches[4]');			   
 			$aRules = $aNewRules + $aRules;
 			return $aRules;
 		}
