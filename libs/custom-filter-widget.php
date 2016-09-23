@@ -25,11 +25,12 @@
 			if ( ! empty( $title ) )
 			echo $args['before_title'] . $title . $args['after_title'];
 
-			$args = array( 'orderby' => 'name',
-								  'order' => 'ASC',
-								  'hide_empty' => 0,
-								  'exclude' => $cf_prod_cat,
-								  'taxonomy' => 'product_cat');
+			$args = array( 'parent' => 0,
+							'orderby' => 'name',
+							'order' => 'ASC',
+							'hide_empty' => 0,
+							'exclude' => $cf_prod_cat,
+							'taxonomy' => 'product_cat');
 					
 			$cf_cats = get_categories( $args );
 
@@ -64,7 +65,8 @@
 
 			<?php 
 
-				$cf_args = array( 'orderby' => 'name',
+				$cf_args = array( 'parent' => 0,
+								  'orderby' => 'name',
 								  'order' => 'ASC',
 								  'hide_empty' => 0,
 								  'taxonomy' => 'product_cat');
