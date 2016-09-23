@@ -72,6 +72,7 @@
 				$cf_prod_cats = get_categories( $cf_args );
 
 			?>
+			
 			<div class="cf_prodcat_cotnainer">
 				<p><em>Check the categories to hide in the sidebar.</em></p>
 				<?php foreach ( $cf_prod_cats as $id => $specificCat) { ?>
