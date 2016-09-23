@@ -9,6 +9,7 @@
 
 require_once('libs/bootstrap.php');
 require_once('libs/shortcodes.php');
+require_once('libs/custom-filter-widget.php');
 
 $cf_app = new Bootstrap();
 
