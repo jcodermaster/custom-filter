@@ -16,6 +16,8 @@
 
 		$form_to_display = $_POST['form_to_display'];
 		$sort_cutting_length = $_POST['sort_cutting_length'];
+
+		$hide_cat = implode(",", $_POST['hide_cat']);
 		
 		
 		
@@ -29,7 +31,8 @@
 					  'cf_result_heading_color' => $result_heading_color,
 					  'cf_result_text_color' => $result_text_color,
 					  'cf_form_display' => $form_to_display,
-					  'cf_sort_cutting_length' => $sort_cutting_length);
+					  'cf_sort_cutting_length' => $sort_cutting_length,
+					  'cf_hide_cats' => $hide_cat);
 		
 		$update = $action->updateData('wp_cf_settings', 1, 'cf_setting_id', $data);
 		
@@ -60,6 +63,7 @@
 				<li><a href="#general">General</a></li>
 				<li><a href="#filter-result">Filter Result</a></li>
 				<li><a href="#colors">BG & Colors</a></li>
+				<li><a href="#prod_cat">Product Categories</a></li>
 			  </ul>
 			  <div id="general">
 				<h2>Generals</h2>
@@ -174,6 +178,41 @@
 				</table>
 				
 			  </div>
+			  <div id="prod_cat">
+			  		<h2>Woocommerce Product and Caregories Options</h2>
+			  		<?php 
+			  			$args = array( 'parent' => 0,
+							'orderby' => 'name',
+							'order' => 'ASC',
+							'hide_empty' => 0,
+							'taxonomy' => 'product_cat');
+					
+						$prod_cats = get_categories( $args );
+
+						$setting_hide_cat =  explode(",", $settings[0]->cf_hide_cats);
+						
+			  		?>
+			  		<table>
+			  			<tbody>
+			  				<tr>
+			  					<th valign="top">Hide category in shop page.</th>
+			  					<td style="padding-left:10px;" valign="top">
+			  					<?php foreach ( $prod_cats as $cat) { ?>
+			  						<p style="margin:0px 0px 10px 0px;">
+			  							<input value="<?php echo $cat->term_id; ?>" type="checkbox" name="hide_cat[]" 
+			  								<?php if (in_array($cat->term_id, $setting_hide_cat)) echo 'checked'; ?> 
+			  									/>
+			  							<label><?php echo $cat->name;?></label>
+			  						</p>
+			  					<?php } ?>
+			  					</td>
+			  				</tr>
+			  			</tbody>
+			  		</table>
+
+			  </div>
+
+
 		 </div>
 		<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p>
 	 </form>

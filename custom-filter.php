@@ -1,7 +1,7 @@
 <?php 
 /*
 	Plugin Name: Custom Filter
-	Description: Custom filter for Mikeschainsaw Shop
+	Description: Custom filter for Woocommerce Product
 	Author: Jerome Chan
 	Version: 1.0
 	Author URI: http://jeromechan.com
@@ -16,7 +16,7 @@ $cf_app = new Bootstrap();
 require_once('libs/actions.php');
 		
 function cf_menu() {  
-	add_menu_page("Custom Filter", "Custom Filter", 1, "custom_filter", "custom_filter"); 
+	add_menu_page("Custom Filter", "Custom Filter", 1, "custom_filter", "custom_filter",plugins_url() . "/custom-filter/images/search-icon-png.png"); 
 	add_submenu_page( "custom_filter", "Dashboard", "Dashboard", 1, "custom_filter", "custom_filter" );
 	add_submenu_page( "custom_filter", "Shortcodes", "Add Shortcodes", 1, "shortcode", "shortcode" );
 	add_submenu_page( "custom_filter", "Settings", "Settings", 1, "settings", "settings" );
